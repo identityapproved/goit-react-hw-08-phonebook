@@ -1,19 +1,43 @@
-import ContactsForm from 'Components/ContactsForm/ContactsForm';
-import { ContactsList } from 'Components/ContactsList/ContactsList';
-import { Container } from 'Components/Container/Container';
-import { Filter } from 'Components/Filter/Filter';
+import Header from 'Components/Header/Header';
+import PrivateRoute from 'Components/Routes/PrivateRoute';
+import PublicRoute from 'Components/Routes/PublicRoute';
+import { lazy, Suspense } from 'react';
+import { Switch } from 'react-router';
+import { ContactsView } from 'Views/ContactsView';
+import { HomeView } from 'Views/HomeView';
+import { LoginView } from 'Views/LoginView';
+import { RegistrationView } from 'Views/RegisterView';
 
-export const App = () => {
+// const ContactsView = lazy(() => import('../../Views/ContactsView'));
+// const HomeView = lazy(() => import('../../Views/HomeView'));
+// const RegistrationView = lazy(() => import('../../Views/RegisterView'));
+
+function App() {
   return (
     <>
-      <Container title="Phonebook">
-        <ContactsForm />
-      </Container>
+      <Header />
 
-      <Container title="Contacts">
-        <Filter />
-        <ContactsList />
-      </Container>
+      <Switch>
+        <Suspense fallback={'loading...'}>
+          {/* <PublicRoute path="/" exact>
+          <HomeView />
+        </PublicRoute> */}
+
+          <PublicRoute path="/registration" exact>
+            <RegistrationView />
+          </PublicRoute>
+
+          <PublicRoute path="/login" exact>
+            <LoginView />
+          </PublicRoute>
+
+          <PrivateRoute path="/contacts" redirectTo="/login">
+            <ContactsView />
+          </PrivateRoute>
+        </Suspense>
+      </Switch>
     </>
   );
-};
+}
+
+export default App;

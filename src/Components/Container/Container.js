@@ -4,7 +4,7 @@ import { SectionMain, SectionTitle } from './Container.styled';
 export const Container = ({ children, title }) => {
   return (
     <SectionMain>
-      <SectionTitle>{title}</SectionTitle>
+      {title ?? <SectionTitle>{title}</SectionTitle>}
       {children}
     </SectionMain>
   );
