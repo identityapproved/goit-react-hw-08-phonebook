@@ -22,7 +22,7 @@ export const LoginView = () => {
         break;
 
       default:
-        break;
+        return;
     }
   };
 

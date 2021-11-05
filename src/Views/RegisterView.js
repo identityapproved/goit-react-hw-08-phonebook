@@ -27,7 +27,7 @@ export const RegistrationView = () => {
         break;
 
       default:
-        break;
+        return;
     }
   };
 
