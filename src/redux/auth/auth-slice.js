@@ -22,14 +22,14 @@ const authSlice = createSlice({
       state.token = payload.token;
       state.isLoggedIn = true;
     },
-    [logOut.fulfilled](state, { payload }) {
-      state.user = payload.user;
-      state.token = payload.token;
-      state.isLoggedIn = true;
+    [logOut.fulfilled](state) {
+      state.user = { name: null, email: null };
+      state.token = null;
+      state.isLoggedIn = false;
     },
-    // [fetchCurrentUser.fulfilled](state, { payload }) {
-    //   state.isCurrent = true;
-    // },
+    [fetchCurrentUser.fulfilled](state) {
+      state.isCurrent = true;
+    },
     [fetchCurrentUser.fulfilled](state, { payload }) {
       state.user = payload;
       state.isCurrent = true;

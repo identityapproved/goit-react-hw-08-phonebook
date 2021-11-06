@@ -9,7 +9,3 @@ export const Container = ({ children, title }) => {
     </SectionMain>
   );
 };
-
-Container.propTypes = {
-  title: PropTypes.string.isRequired,
-};

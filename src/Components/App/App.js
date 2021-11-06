@@ -1,4 +1,4 @@
-import Header from 'Components/Header/Header';
+import AppBar from 'Components/Header/AppBar';
 import PrivateRoute from 'Components/Routes/PrivateRoute';
 import PublicRoute from 'Components/Routes/PublicRoute';
 import { lazy, Suspense, useEffect } from 'react';
@@ -25,7 +25,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <AppBar />
 
       <Switch>
         <Suspense fallback={'loading...'}>
